@@ -1,6 +1,6 @@
 import keyboard
 from win32api import Beep
-from random import randint
+from random import random, randint
 from time import sleep, time 
 from threading import Thread
 from requests import get
@@ -23,9 +23,6 @@ class AntiAFKTool:
     m_times_until_press_and_release = 1
     
     m_not_running_sleep_duration = 0.2
-    m_random_sleep_time_from = 1
-    m_random_sleep_time_to = 3
-    m_sleep_time_multiplier = 1.5
     
     m_pressed_keys = set()
     
@@ -93,11 +90,9 @@ Help:
             if not self.m_is_running:
                 sleep(self.m_not_running_sleep_duration)
                 continue
-            #self.press_and_release(self.m_jump_button, self.m_jump_sleep_duration)
-            self.press_and_release(self.m_left_mouse, 10)
-            for i in range(self.m_times_until_press_and_release):
-                if not self.m_is_running: break
-                sleep(1) # randint(self.m_random_sleep_time_from, self.m_random_sleep_time_to) * self.m_sleep_time_multiplier
+            self.press_and_release(self.m_left_mouse, 10 + randint(1, 5) + random())
+            t_random_duration = random()
+            sleep(t_random_duration if t_random_duration > 0.4 else t_random_duration + 0.4)
 
 
 if __name__ == '__main__':
