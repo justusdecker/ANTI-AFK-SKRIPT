@@ -4,7 +4,7 @@ from random import random, randint
 from time import sleep, time 
 from threading import Thread
 from requests import get
-C_VERSION = '0.2'
+C_VERSION = '0.3'
 C_SHORT_BEEP_DURATION = 200
 C_LONG_BEEP_DURATION = 400
 
